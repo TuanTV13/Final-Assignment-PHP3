@@ -7,5 +7,5 @@
 @section('content')
     
 <div class="ckeditor-classic"></div>
-
+    
 @endsection

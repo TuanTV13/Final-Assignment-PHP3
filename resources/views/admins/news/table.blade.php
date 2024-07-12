@@ -1,7 +1,7 @@
 @extends('admins.layouts.master')
 
 @section('title')
-    Create
+    Table
 @endsection
 
 @section('content')
@@ -64,11 +64,12 @@
                                                         value="option">
                                                 </div>
                                             </th>
-                                            <th class="sort" data-sort="customer_name">Customer</th>
-                                            <th class="sort" data-sort="email">Email</th>
-                                            <th class="sort" data-sort="phone">Phone</th>
-                                            <th class="sort" data-sort="date">Joining Date</th>
-                                            <th class="sort" data-sort="status">Delivery Status</th>
+                                            <th class="sort" data-sort="id">ID</th>
+                                            <th class="sort" data-sort="title">Title</th>
+                                            <th class="sort" data-sort="views">Views</th>
+                                            <th class="sort" data-sort="category">Category</th>
+                                            <th class="sort" data-sort="create_at">Create_at</th>
+                                            <th class="sort" data-sort="description">Description</th>
                                             <th class="sort" data-sort="action">Action</th>
                                         </tr>
                                     </thead>
@@ -82,26 +83,28 @@
                                             </th>
                                             <td class="id" style="display:none;"><a href="javascript:void(0);"
                                                     class="fw-medium link-primary">#VZ2101</a></td>
-                                            <td class="customer_name">Mary Cousar</td>
-                                            <td class="email">marycousar@velzon.com</td>
-                                            <td class="phone">580-464-4694</td>
-                                            <td class="date">06 Apr, 2021</td>
-                                            <td class="status"><span
-                                                    class="badge bg-success-subtle text-success text-uppercase">Active</span>
-                                            </td>
-                                            <td>
-                                                <div class="d-flex gap-2">
-                                                    <div class="edit">
-                                                        <button class="btn btn-sm btn-success edit-item-btn"
-                                                            data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                            @foreach ($data as $new)
+                                                <td class="id">{{ $new->id }}</td>
+                                                <td class="title">{{ $new->title }}</td>
+                                                <td class="views">{{ $new->views }}</td>
+                                                <td class="category">{{ $new->category_name }}</td>
+                                                <td class="create_at">{{ $new->create_at }}</td>
+                                                <td class="description">{{ $new->description }}</td>
+                                                <td>
+                                                    <div class="d-flex gap-2">
+                                                        <div class="edit">
+                                                            <button class="btn btn-sm btn-success edit-item-btn"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#showModal">Edit</button>
+                                                        </div>
+                                                        <div class="remove">
+                                                            <button class="btn btn-sm btn-danger remove-item-btn"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#deleteRecordModal">Remove</button>
+                                                        </div>
                                                     </div>
-                                                    <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal">Remove</button>
-                                                    </div>
-                                                </div>
-                                            </td>
+                                                </td>
+                                            @endforeach
                                         </tr>
                                     </tbody>
                                 </table>
