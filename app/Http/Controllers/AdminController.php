@@ -8,7 +8,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admins.news.index');
+        return view('admins.index');
     }
 
     public function table()
