@@ -36,7 +36,6 @@
 
                     <!-- start page title -->
                     
-                    @include('admins.components.breadcump')
 
                     <!-- end page title -->
 
