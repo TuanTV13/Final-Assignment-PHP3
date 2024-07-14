@@ -55,7 +55,6 @@
                         <div>
                             <label for="cleave-date" class="form-label">Description</label>
                             <div class="ckeditor-classic"></div>
-
                         </div>
 
                         <button type="button" class="btn btn-primary mt-3">Primary</button>

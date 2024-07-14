@@ -17,3 +17,13 @@
 
 <!-- App js -->
 <script src="/admins/assets/js/app.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        ClassicEditor
+            .create(document.querySelector('.ckeditor-classic'))
+            .catch(error => {
+                console.error(error);
+            });
+    });
+</script>
