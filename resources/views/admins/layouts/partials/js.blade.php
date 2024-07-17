@@ -15,15 +15,15 @@
 <!-- Dashboard init -->
 <script src="{{ asset('admins/assets/js/pages/dashboard-analytics.init.js') }}"></script>
 
+<script src="{{ asset('admins/assets/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
+
 <!-- App js -->
 <script src="{{ asset('admins/assets/js/app.js') }}"></script>
 
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        ClassicEditor
-            .create(document.querySelector('.ckeditor-classic'))
-            .catch(error => {
-                console.error(error);
-            });
-    });
-</script>
+<!-- quill js -->
+<script src="{{ asset('admins/assets/libs/quill/quill.min.js') }}"></script>
+
+<!-- init js -->
+<script src="{{ asset('admins/assets/js/pages/form-editor.init.js') }}"></script>
+
+

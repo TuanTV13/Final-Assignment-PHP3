@@ -17,22 +17,42 @@
                 <div class="card-body">
                     <div class="listjs-table" id="customerList">
                         <div class="row g-4 mb-3">
-                            <div class="col-sm-auto">
+                            <div class="col-sm-7">
                                 <div>
                                     <button type="button" class="btn btn-success add-btn" data-bs-toggle="modal"
-                                        id="create-btn" data-bs-target="#showModal"><i
-                                            class="ri-add-line align-bottom me-1"></i> Add</button>
-                                    <button class="btn btn-soft-danger" onClick="deleteMultiple()"><i
+                                        id="create-btn" data-bs-target="#showModal"><a
+                                            href="{{ route('admin.news.create') }}">
+                                            <i class="ri-add-line align-bottom me-1"></i> Add</button>
+                                    </a>
+                                    <a href="{{ route('admin.news.deleteAll') }}">
+                                        <button class="btn btn-soft-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i
                                             class="ri-delete-bin-2-line"></i></button>
+                                    </a>
                                 </div>
                             </div>
-                            <div class="col-sm">
-                                <div class="d-flex justify-content-sm-end">
-                                    <div class="search-box ms-2">
-                                        <input type="text" class="form-control search" placeholder="Search...">
-                                        <i class="ri-search-line search-icon"></i>
+                            <div class="col-sm-5">
+                                <form action="{{ route('admin.news.filter') }}" method="GET">
+                                    <div class="col-sm">
+                                        <div class="d-flex justify-content-sm-end">
+                                            <div class="ms-2">
+                                                <select name="category_id" class="form-control">
+                                                    <option value="">Select Category</option>
+                                                    @foreach ($categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                            <div class="search-box ms-2">
+                                                <input type="text" name="search" class="form-control search"
+                                                    placeholder="Search...">
+                                                <i class="ri-search-line search-icon"></i>
+                                            </div>
+                                            <div class="ms-2">
+                                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                             </div>
                         </div>
 
@@ -48,6 +68,7 @@
                                         </th>
                                         <th class="sort" data-sort="id">ID</th>
                                         <th class="sort" data-sort="title">Title</th>
+                                        <th class="sort" data-sort="image">Image</th>
                                         <th class="sort" data-sort="views">Views</th>
                                         <th class="sort" data-sort="category">Category</th>
                                         <th class="sort" data-sort="create_at">Create_at</th>
@@ -56,18 +77,20 @@
                                     </tr>
                                 </thead>
                                 <tbody class="list form-check-all">
-                                    <tr>
-                                        <th scope="row">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" name="chk_child"
-                                                    value="option1">
-                                            </div>
-                                        </th>
-                                        <td class="id" style="display:none;"><a href="javascript:void(0);"
-                                                class="fw-medium link-primary">#VZ2101</a></td>
-                                        @foreach ($data as $new)
+                                    @foreach ($data as $new)
+                                        <tr>
+                                            <th scope="col" style="width: 50px;">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="checkAll"
+                                                        value="option">
+                                                </div>
+                                            </th>
                                             <td class="id">{{ $new->id }}</td>
                                             <td class="title">{{ $new->title }}</td>
+                                            <td>
+                                                <img style="width:100px; height:100px;"
+                                                    src="{{ asset('images/' . $new->image) }}" alt="{{ $new->title }}">
+                                            </td>
                                             <td class="views">{{ $new->views }}</td>
                                             <td class="category">{{ $new->category_name }}</td>
                                             <td class="create_at">{{ $new->create_at }}</td>
@@ -75,18 +98,30 @@
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
-                                                        <button class="btn btn-sm btn-success edit-item-btn"
-                                                            data-bs-toggle="modal" data-bs-target="#showModal">Edit</button>
+                                                        <a href="{{ route('admin.news.edit', ['id' => $new->id]) }}">
+                                                            <button class="btn btn-sm btn-success edit-item-btn"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#showModal">Edit</button>
+                                                        </a>
+                                                    </div>
+                                                    <div class="details">
+                                                        <a href="{{ route('admin.news.details', ['id' => $new->id]) }}">
+                                                            <button class="btn btn-sm btn-success details-item-btn"
+                                                                data-bs-toggle="modal"
+                                                                data-bs-target="#showModal">details</button>
+                                                        </a>
                                                     </div>
                                                     <div class="remove">
-                                                        <button class="btn btn-sm btn-danger remove-item-btn"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#deleteRecordModal">Remove</button>
+                                                        <a href="{{ route('admin.news.delete', ['id' => $new->id]) }}">
+                                                            <button class="btn btn-sm btn-danger remove-item-btn"
+                                                                data-bs-toggle="modal" data-bs-target="#deleteRecordModal"
+                                                                onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">Remove</button>
+                                                        </a>
                                                     </div>
                                                 </div>
                                             </td>
-                                        @endforeach
-                                    </tr>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <div class="noresult" style="display: none">
@@ -101,23 +136,40 @@
                             </div>
                         </div>
 
+                        <!-- Pagination -->
                         <div class="d-flex justify-content-end">
                             <div class="pagination-wrap hstack gap-2">
-                                <a class="page-item pagination-prev disabled" href="javascript:void(0);">
-                                    Previous
-                                </a>
-                                <ul class="pagination listjs-pagination mb-0"></ul>
-                                <a class="page-item pagination-next" href="javascript:void(0);">
-                                    Next
-                                </a>
+                                <!-- Previous Link -->
+                                @if ($data->onFirstPage())
+                                    <a class="page-item pagination-prev disabled" href="#">
+                                        Previous
+                                    </a>
+                                @else
+                                    <a class="page-item pagination-prev" href="{{ $data->previousPageUrl() }}">
+                                        Previous
+                                    </a>
+                                @endif
+
+                                <!-- Pagination Links -->
+
+
+                                <!-- Next Link -->
+                                @if ($data->hasMorePages())
+                                    <a class="page-item pagination-next" href="{{ $data->nextPageUrl() }}">
+                                        Next
+                                    </a>
+                                @else
+                                    <a class="page-item pagination-next disabled" href="#">
+                                        Next
+                                    </a>
+                                @endif
                             </div>
                         </div>
-                    </div>
-                </div><!-- end card -->
+                    </div><!-- end card -->
+                </div>
+                <!-- end col -->
             </div>
             <!-- end col -->
         </div>
-        <!-- end col -->
-    </div>
-    <!-- end row -->
-@endsection
+        <!-- end row -->
+    @endsection

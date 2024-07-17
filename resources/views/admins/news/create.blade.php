@@ -5,31 +5,36 @@
 @endsection
 
 @section('content')
-    @include('admins.components.breadcump', ['name' => 'Table'])
+    @include('admins.components.breadcump', ['name' => 'Create'])
 
     <div class="row">
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title mb-0">Examples</h4>
+                    <h4 class="card-title mb-0">Add New</h4>
                 </div><!-- end card header -->
 
                 <div class="card-body">
-                    <form action="#">
+                    <form action="{{ route('admin.news.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
                         <div>
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="mb-3">
-                                        <label for="cleave-date" class="form-label">Title</label>
-                                        <input type="text" class="form-control" id="cleave-date">
+                                        <label for="title" class="form-label">Title</label>
+                                        <input type="text" class="form-control" id="title" name="title" required>
                                     </div>
-
                                 </div><!-- end col -->
 
                                 <div class="col-xl-6">
                                     <div class="mb-3">
-                                        <label for="cleave-date-format" class="form-label">Category</label>
-                                        <input type="text" class="form-control" id="cleave-date-format">
+                                        <label for="category_id" class="form-label">Category</label>
+                                        <select name="category_id" id="category_id" class="form-control" required>
+                                            <option value="">Select Category</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div><!-- end col -->
                             </div><!-- end row -->
@@ -38,27 +43,29 @@
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="mb-3">
-                                        <label for="cleave-date" class="form-label">Date</label>
-                                        <input type="date" class="form-control" id="cleave-date">
+                                        <label for="create_at" class="form-label">Date</label>
+                                        <input type="date" class="form-control" id="create_at" name="create_at" required>
                                     </div>
-
                                 </div><!-- end col -->
 
                                 <div class="col-xl-6">
                                     <div class="mb-3">
-                                        <label for="cleave-date-format" class="form-label">Views</label>
-                                        <input type="number" class="form-control" id="cleave-date-format">
+                                        <label for="views" class="form-label">Views</label>
+                                        <input type="number" class="form-control" id="views" name="views" required>
                                     </div>
                                 </div><!-- end col -->
                             </div><!-- end row -->
                         </div>
-                        <div>
-                            <label for="cleave-date" class="form-label">Description</label>
-                            <div class="ckeditor-classic"></div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name="image" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Description</label>
+                            <textarea class="form-control" id="description" name="description" rows="5" required></textarea>
                         </div>
 
-                        <button type="button" class="btn btn-primary mt-3">Primary</button>
-
+                        <button type="submit" class="btn btn-primary mt-3">Save</button>
                     </form><!-- end form -->
                 </div><!-- end card-body -->
             </div><!-- end card -->
