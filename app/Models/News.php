@@ -14,10 +14,9 @@ class News extends Model
     protected $fillable = [
         'title',
         'category_id',
-        'date',
+        'create_at',
         'views',
         'image',
         'description'
     ];
-
 }

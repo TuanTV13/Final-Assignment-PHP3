@@ -2,7 +2,7 @@
     <div class="container d-flex justify-content-between align-items-center">
 
         <a class="navbar-brand text-success logo h1 align-self-center" href="/">
-            NewPress
+            TPress
         </a>
 
         <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
@@ -22,13 +22,15 @@
                         <a class="nav-link" href="/">About</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
                             Tin tức
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             @foreach ($data as $item)
                                 <li>
-                                    <a class="dropdown-item" href="{{ $item->id }}">{{ $item->name }}</a>
+                                    <a class="dropdown-item"
+                                        href="{{ route('newsbycategory', ['id' => $item->id]) }}">{{ $item->name }}</a>
                                 </li>
                             @endforeach
                         </ul>
@@ -38,7 +40,7 @@
                     </li>
                 </ul>
             </div>
-            
+
             <div class="navbar align-self-center d-flex">
                 <div class="d-lg-none flex-sm-fill mt-3 mb-4 col-7 col-sm-auto pr-3">
                     <div class="input-group">
@@ -52,7 +54,7 @@
                     data-bs-target="#templatemo_search">
                     <i class="fa fa-fw fa-search text-dark mr-2"></i>
                 </a>
-                <a class="nav-icon position-relative text-decoration-none" href="#">
+                <a class="nav-icon position-relative text-decoration-none" href="/admin">
                     <i class="fa fa-fw fa-user text-dark mr-3"></i>
                 </a>
             </div>

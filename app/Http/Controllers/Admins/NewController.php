@@ -14,7 +14,7 @@ class NewController extends Controller
             ->join('categories', 'categories.id', '=', 'news.category_id')
             ->select('news.id', 'news.title', 'news.views', 'news.create_at', 'news.image', 'news.description', 'categories.name as category_name')
             ->orderByDesc('news.id')
-            ->paginate(50);
+            ->paginate(25);
 
         $categories = DB::table('categories')->get();
 

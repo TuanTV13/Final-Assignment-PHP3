@@ -13,3 +13,6 @@
 <link href="{{ asset('admins/assets/css/app.min.css') }}" rel="stylesheet" type="text/css" />
 <!-- custom Css-->
 <link href="{{ asset('admins/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
+
+<!-- CKEditor CDN -->
+<script src="https://cdn.ckeditor.com/ckeditor5/34.1.0/classic/ckeditor.js"></script>

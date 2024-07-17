@@ -124,6 +124,11 @@
                     @include('clients.components.featured-news')
                 @endforeach
             </div>
+            <div class="row">
+                @foreach ($news as $new)
+                    @include('clients.components.featured-news')
+                @endforeach
+            </div>
         </div>
     </section>
     <!-- End Featured Product -->

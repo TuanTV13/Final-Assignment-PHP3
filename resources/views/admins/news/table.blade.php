@@ -25,8 +25,9 @@
                                             <i class="ri-add-line align-bottom me-1"></i> Add</button>
                                     </a>
                                     <a href="{{ route('admin.news.deleteAll') }}">
-                                        <button class="btn btn-soft-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i
-                                            class="ri-delete-bin-2-line"></i></button>
+                                        <button class="btn btn-soft-danger"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"><i
+                                                class="ri-delete-bin-2-line"></i></button>
                                     </a>
                                 </div>
                             </div>
@@ -57,34 +58,23 @@
                         </div>
 
                         <div class="table-responsive table-card mt-3 mb-1">
-                            <table class="table align-middle table-nowrap" id="customerTable">
-                                <thead class="table-light">
+                            <table class="table align-middle" id="customerTable">
+                                <thead class="table-secondary">
                                     <tr>
-                                        <th scope="col" style="width: 50px;">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="checkAll"
-                                                    value="option">
-                                            </div>
-                                        </th>
-                                        <th class="sort" data-sort="id">ID</th>
-                                        <th class="sort" data-sort="title">Title</th>
-                                        <th class="sort" data-sort="image">Image</th>
-                                        <th class="sort" data-sort="views">Views</th>
-                                        <th class="sort" data-sort="category">Category</th>
-                                        <th class="sort" data-sort="create_at">Create_at</th>
-                                        <th class="sort" data-sort="description">Description</th>
-                                        <th class="sort" data-sort="action">Action</th>
+                                        
+                                        <th data-sort="id">ID</th>
+                                        <th data-sort="title">Title</th>
+                                        <th data-sort="image">Image</th>
+                                        <th data-sort="views">Views</th>
+                                        <th data-sort="category">Category</th>
+                                        <th data-sort="create_at">Create_at</th>
+                                        <th data-sort="action">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody class="list form-check-all">
                                     @foreach ($data as $new)
                                         <tr>
-                                            <th scope="col" style="width: 50px;">
-                                                <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" id="checkAll"
-                                                        value="option">
-                                                </div>
-                                            </th>
+                                            
                                             <td class="id">{{ $new->id }}</td>
                                             <td class="title">{{ $new->title }}</td>
                                             <td>
@@ -94,7 +84,6 @@
                                             <td class="views">{{ $new->views }}</td>
                                             <td class="category">{{ $new->category_name }}</td>
                                             <td class="create_at">{{ $new->create_at }}</td>
-                                            <td class="description">{{ $new->description }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">
