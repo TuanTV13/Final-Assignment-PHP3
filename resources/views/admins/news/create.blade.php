@@ -43,11 +43,10 @@
                             <div class="row">
                                 <div class="col-xl-6">
                                     <div class="mb-3">
-                                        <label for="create_at" class="form-label">Date</label>
-                                        <input type="date" class="form-control" id="create_at" name="create_at" required>
+                                        <label for="image" class="form-label">Image</label>
+                                        <input type="file" class="form-control" id="image" name="image" required>
                                     </div>
                                 </div><!-- end col -->
-
                                 <div class="col-xl-6">
                                     <div class="mb-3">
                                         <label for="views" class="form-label">Views</label>
@@ -56,10 +55,7 @@
                                 </div><!-- end col -->
                             </div><!-- end row -->
                         </div>
-                        <div class="mb-3">
-                            <label for="image" class="form-label">Image</label>
-                            <input type="file" class="form-control" id="image" name="image" required>
-                        </div>
+                        
                         <div class="mb-3">
                             <label for="description" class="form-label">Description</label>
                             <textarea class="form-control" id="description" name="description" rows="5" required></textarea>

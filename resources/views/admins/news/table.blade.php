@@ -67,7 +67,6 @@
                                         <th data-sort="image">Image</th>
                                         <th data-sort="views">Views</th>
                                         <th data-sort="category">Category</th>
-                                        <th data-sort="create_at">Create_at</th>
                                         <th data-sort="action">Action</th>
                                     </tr>
                                 </thead>
@@ -83,7 +82,6 @@
                                             </td>
                                             <td class="views">{{ $new->views }}</td>
                                             <td class="category">{{ $new->category_name }}</td>
-                                            <td class="create_at">{{ $new->create_at }}</td>
                                             <td>
                                                 <div class="d-flex gap-2">
                                                     <div class="edit">

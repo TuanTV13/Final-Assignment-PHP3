@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +14,7 @@ class NewController extends Controller
     {
         $data = DB::table('news')
             ->join('categories', 'categories.id', '=', 'news.category_id')
-            ->select('news.id', 'news.title', 'news.views', 'news.create_at', 'news.image', 'news.description', 'categories.name as category_name')
+            ->select('news.id', 'news.title', 'news.views', 'news.image', 'news.description', 'categories.name as category_name')
             ->orderByDesc('news.id')
             ->paginate(25);
 
@@ -23,9 +25,9 @@ class NewController extends Controller
 
     public function filter(Request $request)
     {
-        $query = DB::table('news')
+        $query = News::query()
             ->join('categories', 'categories.id', '=', 'news.category_id')
-            ->select('news.id', 'news.title', 'news.views', 'news.create_at', 'news.image', 'news.description', 'categories.name as category_name');
+            ->select('news.id', 'news.title', 'news.views', 'news.image', 'news.description', 'categories.name as category_name');
 
         if ($request->has('category_id') && $request->category_id != '') {
             $query->where('categories.id', $request->category_id);
@@ -46,7 +48,7 @@ class NewController extends Controller
 
     public function create()
     {
-        $categories = DB::table('categories')->get();
+        $categories = Category::query()->get();
         return view('admins.news.create', compact('categories'));
     }
 
@@ -55,7 +57,6 @@ class NewController extends Controller
         $request->validate([
             'title' => 'required|string',
             'category_id' => 'required|integer',
-            'create_at' => 'required|date',
             'views' => 'required|numeric',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|string'
@@ -67,13 +68,12 @@ class NewController extends Controller
         $new = [
             'title' => $request->title,
             'category_id' => $request->category_id,
-            'create_at' => $request->create_at,
             'views' => $request->views,
             'image' => $imageName,
             'description' => $request->description
         ];
 
-        DB::table('news')->insert($new);
+        News::query()->create($new);
 
         return redirect()->route('admin.news.table')->with('success', 'Created successfully');
     }
@@ -81,7 +81,7 @@ class NewController extends Controller
     public function destroy($id)
     {
 
-        DB::table('news')->where('news.id', $id)->delete();
+        News::query()->where('news.id', $id)->delete();
 
         return redirect()->route('admin.news.table')->with('success', 'Created successfully');
     }
@@ -89,13 +89,13 @@ class NewController extends Controller
     public function edit($id)
     {
 
-        $data = DB::table('news')
+        $data = News::query()
             ->join('categories', 'categories.id', '=', 'news.category_id')
-            ->select('news.id', 'news.title', 'news.views', 'news.create_at', 'news.image', 'news.description', 'categories.name as category_name')
+            ->select('news.id', 'news.title', 'news.views', 'news.image', 'news.description', 'categories.name as category_name')
             ->where('news.id', $id)
             ->first();
 
-        $categories = DB::table('categories')->get();
+        $categories = Category::query()->get();
 
         return view('admins.news.update', compact('data', 'categories'));
     }
@@ -124,7 +124,7 @@ class NewController extends Controller
             'description' => $request->description
         ];
 
-        DB::table('news')->where('id', $id)->update($new);
+        News::query()->where('id', $id)->update($new);
 
         return redirect()->route('admin.news.table')->with('success', 'Created successfully');
     }
@@ -133,9 +133,9 @@ class NewController extends Controller
     public function details($id)
     {
 
-        $data = DB::table('news')
+        $data = News::query()
             ->join('categories', 'categories.id', '=', 'news.category_id')
-            ->select('news.id', 'news.title', 'news.views', 'news.create_at', 'news.image', 'news.description', 'categories.name as category_name')
+            ->select('news.id', 'news.title', 'news.views', 'news.image', 'news.description', 'categories.name as category_name')
             ->where('news.id', $id)
             ->first();
 
@@ -144,7 +144,7 @@ class NewController extends Controller
 
     public function deleteAll()
     {
-        DB::table('news')->delete();
+        News::query()->delete();
 
         return redirect()->route('admin.news.table')->with('success', 'Created successfully');
     }

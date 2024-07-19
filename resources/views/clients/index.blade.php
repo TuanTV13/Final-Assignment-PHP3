@@ -4,132 +4,179 @@
     Home
 @endsection
 
-@section('content')
-    <!-- Start Banner Hero -->
-    <div id="template-mo-zay-hero-carousel" class="carousel slide" data-bs-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="0" class="active"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="1"></li>
-            <li data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="/clients/assets/img/banner_img_01.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left align-self-center">
-                                <h1 class="h1 text-success"><b>Zay</b> eCommerce</h1>
-                                <h3 class="h2">Tiny and Perfect eCommerce Template</h3>
-                                <p>
-                                    Zay Shop is an eCommerce HTML5 CSS template with latest version of Bootstrap 5 (beta
-                                    1).
-                                    This template is 100% free provided by <a rel="sponsored" class="text-success"
-                                        href="https://templatemo.com" target="_blank">TemplateMo</a> website.
-                                    Image credits go to <a rel="sponsored" class="text-success"
-                                        href="https://stories.freepik.com/" target="_blank">Freepik Stories</a>,
-                                    <a rel="sponsored" class="text-success" href="https://unsplash.com/"
-                                        target="_blank">Unsplash</a> and
-                                    <a rel="sponsored" class="text-success" href="https://icons8.com/" target="_blank">Icons
-                                        8</a>.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="/clients/assets/img/banner_img_02.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Proident occaecat</h1>
-                                <h3 class="h2">Aliquip ex ea commodo consequat</h3>
-                                <p>
-                                    You are permitted to use this Zay CSS template for your commercial websites.
-                                    You are <strong>not permitted</strong> to re-distribute the template ZIP file in any
-                                    kind of template collection websites.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="container">
-                    <div class="row p-5">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last">
-                            <img class="img-fluid" src="/clients/assets/img/banner_img_03.jpg" alt="">
-                        </div>
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <h1 class="h1">Repr in voluptate</h1>
-                                <h3 class="h2">Ullamco laboris nisi ut </h3>
-                                <p>
-                                    We bring you 100% free CSS templates for your websites.
-                                    If you wish to support TemplateMo, please make a small contribution via PayPal or
-                                    tell your friends about our website. Thank you.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <a class="carousel-control-prev text-decoration-none w-auto ps-3" href="#template-mo-zay-hero-carousel"
-            role="button" data-bs-slide="prev">
-            <i class="fas fa-chevron-left"></i>
-        </a>
-        <a class="carousel-control-next text-decoration-none w-auto pe-3" href="#template-mo-zay-hero-carousel"
-            role="button" data-bs-slide="next">
-            <i class="fas fa-chevron-right"></i>
-        </a>
+@section('breadcump')
+    <div class="banner text-center">
+        @include('clients.components.breadcump', [
+            'name' => 'Hôm nay <br> Bạn thích đọc gì?',
+            'breadcump' => $categories->map(function ($category) {
+                    return '<li class="list-inline-item"><a href="' .
+                        route('category', ['id' => $category->id]) .
+                        '">' .
+                        $category->name .
+                        '</a></li>';
+                })->implode(''),
+        ])
     </div>
-    <!-- End Banner Hero -->
+@endsection
 
 
-    <!-- Start Categories of The Month -->
-    <section class="container py-5">
-        <div class="row text-center pt-3">
-            <div class="col-lg-6 m-auto">
-                <h1 class="h1">Categories of The Month</h1>
-            </div>
-        </div>
-        <div class="row">
+@section('content')
+    <section class="section pb-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-5">
+                    <h2 class="h5 section-title">Lựa chọn của hôm nay</h2>
+                    <article class="card">
+                        <div class="post-slider slider-sm">
+                            <img style="height: 200px;" src="{{ asset('images/' . $new->image) }}" class="card-img-top"
+                                alt="post-thumb">
+                        </div>
 
-            @foreach ($categories as $category)
-                @include('clients.components.categories-of-the-month')
-            @endforeach
+                        <div class="card-body">
+                            <h3 class="h4 mb-3"><a class="post-title" href="{{ route('details', ['id' => $new->id]) }}">{{ $new->title }}</a></h3>
+                            <ul class="card-meta list-inline">
+                                <li class="list-inline-item">
+                                    <a href="author-single.html" class="card-meta-author">
+                                        <img src="/clients/images/john-doe.jpg">
+                                        <span>Charls Xaviar</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="ti-timer"></i>{{ $new->created_at }}
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="ti-eye"></i>{{ $new->views }}
+                                </li>
+                                <li class="list-inline-item">
+                                    <ul class="card-meta-tag list-inline">
+                                        <li class="list-inline-item"><a href="/">{{ $new->category_name }}</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>{{ Str::limit($new->description, 50, ' ...') }}</p>
+                            <a href="{{ route('details', ['id' => $new->id]) }}" class="btn btn-outline-primary">Đọc thêm</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-lg-4 mb-5">
+                    <h2 class="h5 section-title">Bài viết thịnh hành</h2>
 
-        </div>
-    </section>
-    <!-- End Categories of The Month -->
+                    @foreach ($newstrend as $new)
+                        <article class="card mb-4">
+                            <div class="card-body d-flex">
+                                <img class="card-img-sm" src="{{ asset('images/' . $new->image) }}" alt="No Image">
+                                <div class="ml-3">
+                                    <h4><a href="{{ route('details', ['id' => $new->id]) }}" style="with:100%;"
+                                            class="post-title">{{ $new->title }}</a>
+                                    </h4>
+                                    <ul class="card-meta list-inline mb-0">
+                                        <li class="list-inline-item mb-0">
+                                            <i class="ti-time"></i>{{ $new->created_at }}
+                                        </li>
+                                        <li class="list-inline-item mb-0">
+                                            <i class="ti-eye"></i> {{ $new->views }}
+                                        </li>
+                                        <li class="list-inline-item mb-0">
+                                            <ul class="card-meta-tag list-inline">
+                                                <li class="list-inline-item"><a
+                                                        href="/">{{ $new->category_name }}</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
 
+                </div>
 
-    <!-- Start Featured News -->
-    <section class="bg-light">
-        <div class="container py-5">
-            <div class="row text-center py-3">
-                <div class="col-lg-6 m-auto">
-                    <h1 class="h1">Featured news</h1>
+                <div class="col-lg-4 mb-5">
+                    <h2 class="h5 section-title">Bài đăng phổ biến</h2>
+
+                    <article class="card">
+                        <div class="post-slider slider-sm">
+                            <img style="height:200px;" src="{{ asset('images/' . $newPopular->image) }}"
+                                class="card-img-top" alt="post-thumb">
+                        </div>
+                        <div class="card-body">
+                            <h3 class="h4 mb-3"><a class="post-title" href="{{ route('details', ['id' => $newPopular->id]) }}">{{ $newPopular->title }}</a>
+                            </h3>
+                            <ul class="card-meta list-inline">
+                                <li class="list-inline-item">
+                                    <a href="author-single.html" class="card-meta-author">
+                                        <img src="/clients/images/kate-stone.jpg" alt="Kate Stone">
+                                        <span>Kate Stone</span>
+                                    </a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="ti-timer"></i>{{ $newPopular->created_at }}
+                                </li>
+                                <li class="list-inline-item">
+                                    <i class="ti-eye"></i>{{ $newPopular->views }}
+                                </li>
+                                <li class="list-inline-item">
+                                    <ul class="card-meta-tag list-inline">
+                                        <li class="list-inline-item"><a href="/">{{ $newPopular->category_name }}</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <p>{{ Str::limit($newPopular->description, 50, ' ...') }}</p>
+                            <a href="{{ route('details', ['id' => $newPopular->id]) }}" class="btn btn-outline-primary">Đọc thêm</a>
+                        </div>
+                    </article>
+                </div>
+                <div class="col-12">
+                    <div class="border-bottom border-default"></div>
                 </div>
             </div>
-            <div class="row">
-                @foreach ($news as $new)
-                    @include('clients.components.featured-news')
-                @endforeach
-            </div>
-            <div class="row">
-                @foreach ($news as $new)
-                    @include('clients.components.featured-news')
-                @endforeach
+        </div>
+    </section>
+
+    <section class="section-sm">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8  mb-5 mb-lg-0">
+                    <h2 class="h5 section-title">Bài đăng gần đây</h2>
+
+                    <article class="card mb-4">
+                        <div class="post-slider">
+                            @foreach ($newsdescid as $new)
+                                <div><img style="height:400px;" src="{{ asset('images/' . $new->image) }}"
+                                        class="card-img-top" alt="post-thumb">
+                                    <div class="card-body">
+                                        <h3 class="mb-3"><a class="post-title" href="{{ route('details', ['id' => $new->id]) }}">{{ $new->title }}</a>
+                                        </h3>
+                                        <ul class="card-meta list-inline">
+                                            <li class="list-inline-item">
+                                                <a href="author-single.html" class="card-meta-author">
+                                                    <img src="/clients/images/john-doe.jpg" alt="John Doe">
+                                                    <span>John Doe</span>
+                                                </a>
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="ti-time"></i>{{ $new->created_at }}
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <i class="ti-eye"></i>{{ $new->views }}
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <ul class="card-meta-tag list-inline">
+                                                    <li class="list-inline-item"><a
+                                                            href="/">{{ $new->category_name }}</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                        <p>{{ Str::limit($new->description, 400, ' ...') }}</p>
+                                        <a href="{{ route('details', ['id' => $new->id]) }}" class="btn btn-outline-primary">Đọc thêm</a>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </article>
+
+                </div>
             </div>
         </div>
     </section>
-    <!-- End Featured Product -->
 @endsection

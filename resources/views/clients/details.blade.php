@@ -23,16 +23,14 @@
               </a>
             </li>
             <li class="list-inline-item">
-              <i class="ti-timer"></i>{{ $new->views }}
+              <i class="ti-timer"></i>{{ $new->created_at }}
             </li>
             <li class="list-inline-item">
-              <i class="ti-calendar"></i>{{ $new->create_at }}
+              <i class="ti-eye"></i>{{ $new->views }}
             </li>
             <li class="list-inline-item">
               <ul class="card-meta-tag list-inline">
-                <li class="list-inline-item"><a href="tags.html">Color</a></li>
-                <li class="list-inline-item"><a href="tags.html">Recipe</a></li>
-                <li class="list-inline-item"><a href="tags.html">Fish</a></li>
+                <li class="list-inline-item"><a href="{{ route('category', ['id' => $new->id]) }}">{{ $new->category_name }}</a></li>
               </ul>
             </li>
           </ul>

@@ -1,98 +1,38 @@
-<footer class="bg-dark" id="tempaltemo_footer">
-    <div class="container">
-        <div class="row">
+<svg class="footer-border" height="214" viewBox="0 0 2204 214" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+        d="M2203 213C2136.58 157.994 1942.77 -33.1996 1633.1 53.0486C1414.13 114.038 1200.92 188.208 967.765 118.127C820.12 73.7483 263.977 -143.754 0.999958 158.899"
+        stroke-width="2" />
+</svg>
 
-            <div class="col-md-4 pt-5">
-                <h2 class="h2 text-success border-bottom pb-3 border-light logo">Zay Shop</h2>
-                <ul class="list-unstyled text-light footer-link-list">
-                    <li>
-                        <i class="fas fa-map-marker-alt fa-fw"></i>
-                        123 Consectetur at ligula 10660
-                    </li>
-                    <li>
-                        <i class="fa fa-phone fa-fw"></i>
-                        <a class="text-decoration-none" href="tel:010-020-0340">010-020-0340</a>
-                    </li>
-                    <li>
-                        <i class="fa fa-envelope fa-fw"></i>
-                        <a class="text-decoration-none" href="mailto:info@company.com">info@company.com</a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 pt-5">
-                <h2 class="h2 text-light border-bottom pb-3 border-light">Products</h2>
-                <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">Luxury</a></li>
-                    <li><a class="text-decoration-none" href="#">Sport Wear</a></li>
-                    <li><a class="text-decoration-none" href="#">Men's Shoes</a></li>
-                    <li><a class="text-decoration-none" href="#">Women's Shoes</a></li>
-                    <li><a class="text-decoration-none" href="#">Popular Dress</a></li>
-                    <li><a class="text-decoration-none" href="#">Gym Accessories</a></li>
-                    <li><a class="text-decoration-none" href="#">Sport Shoes</a></li>
-                </ul>
-            </div>
-
-            <div class="col-md-4 pt-5">
-                <h2 class="h2 text-light border-bottom pb-3 border-light">Further Info</h2>
-                <ul class="list-unstyled text-light footer-link-list">
-                    <li><a class="text-decoration-none" href="#">Home</a></li>
-                    <li><a class="text-decoration-none" href="#">About Us</a></li>
-                    <li><a class="text-decoration-none" href="#">Shop Locations</a></li>
-                    <li><a class="text-decoration-none" href="#">FAQs</a></li>
-                    <li><a class="text-decoration-none" href="#">Contact</a></li>
-                </ul>
-            </div>
-
+<div class="container">
+    <div class="row align-items-center">
+        <div class="col-md-5 text-center text-md-left mb-4">
+            <ul class="list-inline footer-list mb-0">
+                <li class="list-inline-item"><a href="privacy-policy.html">Privacy Policy</a></li>
+                <li class="list-inline-item"><a href="terms-conditions.html">Terms Conditions</a></li>
+            </ul>
         </div>
+        <div class="col-md-2 text-center mb-4">
+            <a href="index.html"><img class="img-fluid" width="100px" src="/clients/images/logo1.png"
+                    alt="TPress | Hugo Personal Blog Template"></a>
+        </div>
+        <div class="col-md-5 text-md-right text-center mb-4">
+            <ul class="list-inline footer-list mb-0">
 
-        <div class="row text-light mb-4">
-            <div class="col-12 mb-3">
-                <div class="w-100 my-3 border-top border-light"></div>
-            </div>
-            <div class="col-auto me-auto">
-                <ul class="list-inline text-left footer-icons">
-                    <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="http://facebook.com/"><i
-                                class="fab fa-facebook-f fa-lg fa-fw"></i></a>
-                    </li>
-                    <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank"
-                            href="https://www.instagram.com/"><i class="fab fa-instagram fa-lg fa-fw"></i></a>
-                    </li>
-                    <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank" href="https://twitter.com/"><i
-                                class="fab fa-twitter fa-lg fa-fw"></i></a>
-                    </li>
-                    <li class="list-inline-item border border-light rounded-circle text-center">
-                        <a class="text-light text-decoration-none" target="_blank"
-                            href="https://www.linkedin.com/"><i class="fab fa-linkedin fa-lg fa-fw"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-auto">
-                <label class="sr-only" for="subscribeEmail">Email address</label>
-                <div class="input-group mb-2">
-                    <input type="text" class="form-control bg-dark border-light" id="subscribeEmail"
-                        placeholder="Email address">
-                    <div class="input-group-text btn-success text-light">Subscribe</div>
-                </div>
-            </div>
+                <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
+
+                <li class="list-inline-item"><a href="#"><i class="ti-twitter-alt"></i></a></li>
+
+                <li class="list-inline-item"><a href="#"><i class="ti-linkedin"></i></a></li>
+
+                <li class="list-inline-item"><a href="#"><i class="ti-github"></i></a></li>
+
+                <li class="list-inline-item"><a href="#"><i class="ti-youtube"></i></a></li>
+
+            </ul>
+        </div>
+        <div class="col-12">
+            <div class="border-bottom border-default"></div>
         </div>
     </div>
-
-    <div class="w-100 bg-black py-3">
-        <div class="container">
-            <div class="row pt-2">
-                <div class="col-12">
-                    <p class="text-left text-light">
-                        Copyright &copy; 2021 Company Name
-                        | Designed by <a rel="sponsored" href="https://templatemo.com"
-                            target="_blank">TemplateMo</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</footer>
+</div>

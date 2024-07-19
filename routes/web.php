@@ -18,9 +18,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Client Routes
-Route::get('/', [ClientsNewController::class, 'index']);
+Route::get('/', [ClientsNewController::class, 'index'])->name('index');
 Route::get('/{id}/details', [ClientsNewController::class, 'details'])->name('details');
-Route::get('/{id}/category', [ClientsNewController::class, 'NewsByCategory'])->name('newsbycategory');
+Route::get('/{id}/category', [ClientsNewController::class, 'category'])->name('category');
+// Route::get('/', [ClientsNewController::class, 'filter'])->name('filter');
+Route::get('/filter', [ClientsNewController::class, 'filter'])->name('news.filter');
+
 
 // Admin Routes
 Route::prefix('admin')->name('admin.')->group(function () {
